@@ -45,18 +45,6 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-  void _showToast() {
-    String inputText = _textController.text;
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('$inputText'),
-        duration: const Duration(seconds: 2),
-      )
-    );
-
-    _textController.clear();
-  }
 
   void _saveText() {
     String inputText = _textController.text;
@@ -113,10 +101,17 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _showToast,
-        tooltip: 'Show Toast',
-        child: const Icon(Icons.add),
+      bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: 'Settings',
+            ),
+          ],
       ),
     );
   }

@@ -131,7 +131,7 @@
 | **Memo（メモ）** | ユーザーがアプリから書く短文メモ。genre・tags・created・本文を持ち、`daily.md` に append される | ローカル端末（`memo_queue` → GitHub へ送信） |
 | **Tag（タグ）** | ノートとメモの両方に付くトピックラベル。大小文字は保持。出現頻度でソートされ chip 表示される | GitHub リポジトリ（`tags` テーブルは派生） |
 | **Genre（ジャンル）** | メモの意図分類。`idea` / `reading` / `investigate` の 3 値 enum。`/schedule` バッチへのヒント | アプリ定義（固定 enum） |
-| **SyncState（同期状態）** | 最終 fetch のコミット SHA・時刻・エラー文。設定タブに表示される | ローカル端末（`sync_state` テーブル） |
+| **SyncState（同期状態）** | 同期状態を表す概念オブジェクト。最終 fetch のコミット SHA・時刻・エラー文を保持し、設定タブに表示される。DB テーブル名は `sync_state` で、本書では概念名を `SyncState` に統一する | ローカル端末（`sync_state` テーブル） |
 | **MemoQueue（送信キュー）** | 未送信・失敗メモの待機リスト。オフライン時に積まれ、復帰後に flush される。`dedup_key` で重複防止 | ローカル端末（`memo_queue` テーブル） |
 | **PAT（Personal Access Token）** | GitHub fine-grained PAT。`hiraaaken/base` の Contents R/W のみ許可。OS Keystore に暗号化保存される | ローカル端末（flutter_secure_storage） |
 
